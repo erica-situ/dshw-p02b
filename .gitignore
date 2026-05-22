@@ -2,6 +2,8 @@
 data/data_raw_zip/
 data/raw/
 data/temp/
+data/clean/
+data/combined/
 
 # 数据库文件
 *.db

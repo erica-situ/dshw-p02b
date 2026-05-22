@@ -65,6 +65,14 @@
 - **行业分类**：提取 CSMAR 行业代码首位字母作为行业大类（如 C39 → C）。**保留金融业（J）**，在分析中分组讨论。
 - **日志记录**：关键处理步骤写入 `process_log.txt`。
 
+### 清洗后数据文件说明
+
+- `data/clean/` 和 `data/combined/` 中的 **CSV 文件不上传 GitHub**。
+- 这些文件由 Notebook 自动生成，任何人克隆仓库后，按顺序运行以下 Notebook 即可在本地重建：
+  1. `02_clean_construct_variables.ipynb`：生成 `data/clean/firm_year_clean.csv` 和 `data/combined/csmar_firm_year_panel.csv`
+  2. `03_analysis.ipynb`：生成 `data/combined/csmar_firm_year_panel.parquet`（进阶格式）
+- 若需要检查数据结果，可直接运行 Notebook 在本地查看；协作时可共享 `.csv` 文件，但不必纳入 Git 版本管理。
+
 ## 存储方式
 
 - **基础**：CSV 格式
@@ -74,9 +82,10 @@
   - `data/combined/csmar_firm_year_panel.parquet`（**不上传 GitHub**，可通过 Notebook 重建）
   - **选择理由**：Parquet 为列式存储，具有高压缩比和按列读取的优势。在本次百万行数据下，文件体积约为 CSV 的 1/4；当扩展至全部 A 股季度数据或多表关联时，性能优势更明显。内置 Schema 可避免 CSV 的类型推断错误。
 
+
 ## GitHub 仓库
 
-https://github.com/[你的用户名]/dshw-p02b
+https://github.com/erica-situ/dshw-p02b
 
 ## 如何运行
 
